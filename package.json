@@ -1,0 +1,22 @@
+{
+  "name": "poc",
+  "version": "1.0.0",
+  "description": "Proof of concept mini-projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/areyesram/poc.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/areyesram/poc/issues"
+  },
+  "homepage": "https://github.com/areyesram/poc#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
