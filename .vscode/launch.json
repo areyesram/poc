@@ -11,6 +11,12 @@
             "program":"${workspaceFolder}/es/demo.js"
         },
         {
+            "type": "node",
+            "request": "launch",
+            "name": "Node API",
+            "program":"${workspaceFolder}/express/api.js"
+        },
+        {
         "type": "node",
         "request": "launch",
         "name": "Node Hello",

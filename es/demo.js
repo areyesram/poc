@@ -1,18 +1,28 @@
-var express    = require('express');        // call express
-var app        = express();                 // define our app using express
-var bodyParser = require('body-parser');
-
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
-var port = process.env.PORT || 8080;        // set our port
-
-var router = express.Router();              // get an instance of the express Router
-
-router.get('/', function(req, res) {
-    res.end('hooray! welcome to our api!');   
+const es = require("elasticsearch");
+const client = new es.Client({
+    host: "localhost:9200"
 });
-app.use('/api', router);
+setInterval(_ => {
+    let docs = [];
+    for (let i = 0; i < 1000; i++) {
+        docs.push({
+            index: {}
+        });
+        docs.push({
+            doc: {
+                timestamp: new Date(new Date().valueOf() - Math.random() * 1000 * 60 * 60 * 24 * 365),
+                type: ['A', 'B', 'C', 'D', 'E'][Math.floor(rand() * 5)],
+                amount: 1000 * rand() * rand()
+            }
+        });
+    }
+    client.bulk({
+        index: 'demo',
+        type: 'doc',
+        body: docs
+    }).then(_ => process.stdout.write('.'));
+}, 100);
 
-app.listen(port);
-console.log('Magic happens on port ' + port);
+function rand() {
+    return Math.abs(Math.sin(Math.random() * 3600));
+}

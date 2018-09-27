@@ -1,0 +1,62 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {
+            'packages': ['corechart']
+        });
+        google.charts.setOnLoadCallback(drawChart);
+
+        var chart;
+        var options = {
+            title: 'My Daily Activities'
+        };
+        var data;
+
+        function drawChart() {
+            data = google.visualization.arrayToDataTable(getData());
+            chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            google.visualization.events.addListener(chart, 'select', selectHandler);
+            chart.draw(data, options);
+
+            function selectHandler(e) {
+                var selectedItem = chart.getSelection()[0];
+                var slice = data.getValue(selectedItem.row, 0);
+                document.getElementById("message").innerHTML =
+                    '<input type="button" value="X" onclick="removeFilter()"> ' + slice;
+                data = google.visualization.arrayToDataTable(getData(slice));
+                chart.draw(data, options);
+            }
+        }
+
+        function getData(f) {
+            var a = [
+                ['Work', 11],
+                ['Eat', 2],
+                ['Commute', 2],
+                ['Watch TV', 2],
+                ['Sleep', 7]
+            ];
+            if (f)
+                a = a.filter(function (o) {
+                    return o[0] == f;
+                });
+            a.splice(0, 0, ['Task', 'Hours per Day']);
+            return a;
+        }
+
+        function removeFilter() {
+            data = google.visualization.arrayToDataTable(getData());
+            chart.draw(data, options);
+            document.getElementById("message").innerHTML = '';
+        }
+    </script>
+</head>
+
+<body>
+    <div id="piechart" style="width: 900px; height: 500px;"></div>
+    <span id="message"></span>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,900" rel="stylesheet">
+    <style type="text/css">
+        body {
+            background-color: #f0f0f0;
+            font-family: Montserrat;
+        }
+
+        .grid {
+            font-size: 20px;
+            padding: 8px;
+        }
+
+        span.tiny {
+            font-size: 10px;
+        }
+    </style>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="loader.js"></script>
+    <script type="text/javascript" src="area.js"></script>
+    <script type="text/javascript" src="gauge.js"></script>
+    <script type="text/javascript" src="table.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {
+            'packages': ['corechart', 'gauge', 'table']
+        });
+        google.charts.setOnLoadCallback(areaChart);
+        google.charts.setOnLoadCallback(gaugeChart);
+        google.charts.setOnLoadCallback(drawTable);
+    </script>
+</head>
+
+<body>
+    <div id="area_chart" style="width: 70%; height: 400px;  float: left;"></div>
+    <div id="x" style="width: 30%; height: 400px;  background-color: blue;float: left;"></div>
+    <div></div>
+    <div id="gauge_chart" style="width: 94%; height: 150px;  float: left"></div>
+    <div id="table_div" style="margin-left: 10%"></div>
+</body>
+
+</html>
