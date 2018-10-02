@@ -4,7 +4,7 @@ function gaugeChart() {
         ['Label', 'Value'],
         ['Sucursales', 0],
         ['Afirme Móvil', 0],
-        ['AfiremeNet', 0],
+        ['AfirmeNet', 0],
         ['Cajeros', 0],
         ['Call Center', 0]
     ]);

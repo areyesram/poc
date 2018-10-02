@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <style type="text/css">
+        .existingDivWithClass {
+            font-size: 200%;
+            font-weight: bold;
+            left: 0;
+            position: absolute;
+            text-align: center;
+            top: 100px;
+            width: 100%;
+        }
+    </style>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="FlexGauge.js"></script>
+</head>
+
+<body>
+    <canvas id="example6"></canvas>
+    <div class="existingDivWithClass">
+
+    </div>
+
+    <script type="text/javascript">
+        var gauge = new FlexGauge({
+            appendTo: '#example6',
+            dialValue: true,
+            dialUnit: '$',
+            dialUnitPosition: 'before',
+            dialClass: 'existingDivWithClass',
+            dialUnits: 'unit',
+            arcFillInt: 10,
+            arcFillTotal: 45
+        });
+    </script>
+</body>
+
+</html>

@@ -6,60 +6,65 @@
         google.charts.load('current', {
             'packages': ['corechart']
         });
-        google.charts.setOnLoadCallback(refreshChart);
+        google.charts.setOnLoadCallback(drawChart);
 
-        function refreshChart() {
-            const options = {
-                title: 'Balance',
-                legend: {
-                    position: 'none'
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['X', 'Y', {
+                    'type': 'string',
+                    'role': 'style'
+                }, {
+                    type: 'string',
+                    role: 'annotation'
+                }],
+                [1, 3, null, null],
+                [2, 2.5, null, null],
+                [3, 3, null, null],
+                [4, 4, null, null],
+                [5, 4, null, null],
+                [6, 3,
+                    'point { size: 8; fill-color: #ffffff; stroke-color: #4971A4; stroke-width: 2 }',
+                    'x'
+                ],
+                [7, 2.5, null, null],
+                [8, 3, null, null]
+            ]);
+
+            var annotationColor = '#ff00ff';
+
+            var options = {
+                legend: 'none',
+                hAxis: {
+                    minValue: 0,
+                    maxValue: 9
                 },
                 curveType: 'function',
-                animation: {
-                    duration: 1000,
-                    easing: 'linear'
+                pointSize: 7,
+                annotations: {
+                    stem: {
+                        color: annotationColor
+                    },
+                    style: 'line'
                 }
             };
 
-            let data;
-            let current = 0;
-            let currentx = 0.5;
-            let currenty = 0.5;
-            const chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+            var chartDiv = document.getElementById('visualization');
+            var chart = new google.visualization.LineChart(chartDiv);
 
-            drawChart();
-            setInterval(_ => drawChart(), 5000);
-
-            function getData() {
-                if (!data) {
-                    data = [
-                        ['T', 'Sales', 'Expenses']
-                    ];
-                    for (let i = 0; i < 100; i++) {
-                        data.push([current++,
-                            currentx += Math.random() - 0.5,
-                            currenty += Math.random() - 0.5
-                        ]);
+            google.visualization.events.addListener(chart, 'ready', function () {
+                Array.prototype.forEach.call(chartDiv.getElementsByTagName('rect'), function (rect) {
+                    if (rect.getAttribute('fill') === annotationColor) {
+                        rect.setAttribute('width', '8');
                     }
-                } else {
-                    data.splice(1, 1);
-                    data.push([current++,
-                        currentx += Math.random() - 0.5,
-                        currenty += Math.random() - 0.5
-                    ]);
-                }
-                return google.visualization.arrayToDataTable(data);
-            }
-
-            function drawChart() {
-                chart.draw(getData(), options);
-            }
+                });
+            });
+            chart.draw(data, options);
         }
     </script>
 </head>
 
 <body>
-    <div id="curve_chart" style="width: 900px; height: 500px"></div>
+    <div id="visualization" style="width: 900px; height: 500px;"></div>
 </body>
 
 </html>
