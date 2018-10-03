@@ -5,9 +5,9 @@ function drawTable() {
         height: 250,
         allowHtml: true,
         cssClassNames: {
-            headerRow: 'grid',
-            tableRow: 'grid',
-            oddTableRow: 'grid'
+            headerRow: 'tableGrid',
+            tableRow: 'tableGrid',
+            oddTableRow: 'tableGrid'
         }
     };
     table.draw(getData(), options);
@@ -27,7 +27,7 @@ function drawTable() {
                 return [o,
                     {
                         v: getNext(),
-                        f: format(getPrev()) + ' &#x25b2<span class="tiny">1%</span>'
+                        f: format(getPrev()) + ' ' + arrow() + '<span class="tiny">' + getNext(3).toFixed(0) + '%</span>'
                     },
                     {
                         v: getNext(),
@@ -49,6 +49,11 @@ function drawTable() {
 
     function format(n) {
         return n.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    function arrow() {
+        glyph = Math.random() < 0.5 ? "down.svg" : "up.svg";
+        return '<img style="height:12px" src="/image/' + glyph + '" />';
     }
 
     var rnd;

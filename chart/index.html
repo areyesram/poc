@@ -1,16 +1,54 @@
-<!doctype html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="utf-8">
-    <title>jQuery Flex Gauge Demos</title>
-    <script src="jquery.js"></script>
-    <script type="text/javascript" src="FlexGauge.js"></script>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <style type="text/css">
+        body {
+            font-family: "{THEME:FONT}";
+        }
+
+        h2 {
+            font-size: 32px;
+            margin: 0;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="card.css">
     <link rel="stylesheet" type="text/css" href="gauge2.css">
+    <link rel="stylesheet" type="text/css" href="table.css">
+    <link rel="stylesheet" type="text/css" href="canvas.css">
+
+    <script type="application/javascript" src="jquery.js"></script>
+    <script type="application/javascript" src="loader.js"></script>
+    <script type="application/javascript" src="FlexGauge.js"></script>
+
+    <script type="application/javascript" src="area.js"></script>
+    <script type="application/javascript" src="card.js"></script>
+    <script type="application/javascript" src="gauge2.js"></script>
+    <script type="application/javascript" src="table.js"></script>
+    <script type="application/javascript" src="canvas.js"></script>
+
+    <script type="application/javascript">
+        google.charts.load('current', {
+            'packages': ['corechart', 'gauge', 'table']
+        });
+        google.charts.setOnLoadCallback(areaChart);
+        google.charts.setOnLoadCallback(drawTable);
+        google.charts.setOnLoadCallback(drawCanvas);
+    </script>
 </head>
 
 <body>
+    <div id="area_chart" style="width: 75%; height: 400px;  float: left;"></div>
+    <div id="indicators" style="width: 25%; height: 400px; float: left; vertical-align: bottom;">
+        <div id="card1" style="width:220px; margin: 50px auto 0 auto;"></div>
+        <div id="card2" style="width:220px; margin: 0 auto;"></div>
+    </div>
     <div>
+        <h2 class="title">Indicador general</h2>
+        <iframe src="horbar.html" style="width: 100%; height: 80px; border: 0px none transparent; overflow: hidden;"></iframe>
+    </div>
+    <div style="width: 1200px; margin: 0 auto;">
         <div id="dial1" class="gauge">
         </div>
         <div id="dial2" class="gauge">
@@ -22,9 +60,13 @@
         <div id="dial5" class="gauge">
         </div>
     </div>
+    <div id="table_div" style="text-align: center"></div>
+    <h2 class="title">Sucursales</h2>
+    <div id="canvas" style="text-align: center"></div>
 
-    <script>
-
+    <script type="application/javascript">
+        addCards();
+        gaugeChart();
     </script>
 </body>
 

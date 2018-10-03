@@ -3,10 +3,10 @@ var areaCurrent = [0];
 
 function areaChart() {
     const options = {
+        fontName: '{THEME:FONT}',
         title: 'BAM',
         titleTextStyle: {
             color: '#333333',
-            fontName: 'Montserrat',
             fontSize: 32,
             bold: true
         },
@@ -16,20 +16,17 @@ function areaChart() {
         },
         legendTextStyle: {
             color: '#333333',
-            fontName: 'Montserrat',
             fontSize: 14
         },
         vAxis: {
             textStyle: {
                 fontSize: 12,
-                fontName: 'Montserrat',
                 color: '#333333'
             }
         },
         hAxis: {
             textStyle: {
                 fontSize: 12,
-                fontName: 'Montserrat',
                 color: '#333333'
             }
         },

@@ -1,13 +1,13 @@
-.grid {
-    font-family: Montserrat;
+.tableGrid {
+    font-family: '{THEME:FONT}';
     font-size: 20px;
     padding: 8px;
 }
 
-.grid th {
+.tableGrid th {
     font-weight: normal;
 }
 
-span.tiny {
+.tableGrid span.tiny {
     font-size: 16px;
 }
