@@ -3,10 +3,12 @@ var areaCurrent = [0];
 
 function areaChart() {
     const options = {
+        backgroundColor: 'transparent',
+        color: 'white',
         fontName: '{THEME:FONT}',
         title: 'BAM',
         titleTextStyle: {
-            color: '#333333',
+            color: 'white',
             fontSize: 32,
             bold: true
         },
@@ -15,19 +17,19 @@ function areaChart() {
             left: '5%'
         },
         legendTextStyle: {
-            color: '#333333',
+            color: 'white',
             fontSize: 14
         },
         vAxis: {
             textStyle: {
                 fontSize: 12,
-                color: '#333333'
+                color: 'white',
             }
         },
         hAxis: {
             textStyle: {
                 fontSize: 12,
-                color: '#333333'
+                color: 'white',
             }
         },
         animation: {

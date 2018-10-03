@@ -1,5 +1,5 @@
 .horbar .bar {
-    height: 14px;
+    height: 12px;
     border-radius: 7px;
     background: #49a471;
     background: -moz-linear-gradient(left, #49a471 0%, #eda518 50%, #ec5448 100%);
@@ -35,5 +35,5 @@
     position: absolute;
     left: 40%;
     top: -20px;
-    border-bottom: 10px solid #444;
+    border-bottom: 10px solid #293942;
 }

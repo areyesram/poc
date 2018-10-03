@@ -3,6 +3,7 @@ function drawTable() {
     var options = {
         width: '80%',
         height: 250,
+        backgroundColor: '#1F1F24',
         allowHtml: true,
         cssClassNames: {
             headerRow: 'tableGrid',
@@ -11,9 +12,9 @@ function drawTable() {
         }
     };
     table.draw(getData(), options);
-    setInterval(function () {
-        table.draw(getData(), options);
-    }, 5000);
+    // setInterval(function () {
+    //     table.draw(getData(), options);
+    // }, 5000);
 
     function getData() {
         var data = new google.visualization.DataTable();

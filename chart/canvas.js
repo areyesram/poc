@@ -1,7 +1,7 @@
 function drawCanvas() {
     var table = new google.visualization.Table(document.getElementById('canvas'));
     var options = {
-        width: '90%',
+        // width: '90%',
         allowHtml: true,
         cssClassNames: {
             headerRow: 'canvasGrid',

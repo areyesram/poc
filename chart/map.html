@@ -1,0 +1,68 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="loader.js"></script>
+    <script>
+        google.charts.load('current', {
+            'packages': ['map'],
+            'mapsApiKey': 'AIzaSyB7RSi9M7i0JdTa3DJJcJhWGSHvLd8hujs'
+        });
+        google.charts.setOnLoadCallback(drawMap);
+
+        function drawMap() {
+            var data = google.visualization.arrayToDataTable([
+                ['Lat', 'Long', 'Name'],
+                [25.6949404256518, -100.361537121906, 'A'],
+                [25.7337919311291, -100.2605454238, 'B'],
+                [25.6982022182986, -100.256073590534, 'C'],
+                [25.7175624221985, -100.259808595269, 'D'],
+                [25.6763864847245, -100.266203128604, 'E'],
+                [25.6759389777542, -100.229777943006, 'F'],
+                [25.7116950827981, -100.284655363763, 'G'],
+                [25.6692967122666, -100.233891173091, 'H'],
+                [25.6636964582066, -100.355876484248, 'I'],
+                [25.6874679647621, -100.336195042852, 'J'],
+                [25.7064189039173, -100.209286859082, 'K'],
+                [25.692323024439, -100.348401516207, 'L'],
+                [25.7217342178195, -100.229207091061, 'M'],
+                [25.7396219773996, -100.235861636898, 'N'],
+                [25.7400845545567, -100.335550423502, 'O'],
+                [25.6784491554124, -100.271204304529, 'P'],
+                [25.6973000559671, -100.266719262156, 'Q'],
+                [25.6592697398664, -100.365414997241, 'R'],
+                [25.6646837594966, -100.297651236107, 'S'],
+                [25.7241496093808, -100.355025569401, 'T'],
+                [25.7330826313947, -100.238956624785, 'U']
+            ]);
+
+            var options = {
+                enableScrollWheel: true,
+                showTooltip: true,
+                mapType: 'normal',
+                icons: {
+                    default: {
+                        normal: 'http://icons.iconarchive.com/icons/custom-icon-design/flatastic-6/24/Circle-icon.png',
+                        selected: 'http://icons.iconarchive.com/icons/custom-icon-design/flatastic-6/32/Circle-icon.png'
+                    }
+                }
+            };
+
+            var map = new google.visualization.Map(document.getElementById('chart_div'));
+            map.draw(data, options);
+            google.visualization.events.addListener(map, 'select', selectPoint);
+
+            function selectPoint(e) {
+                var o = map.getSelection();
+                if (o.length == 1)
+                    window.open('mapdetail.html', '_blank');
+                // o[0].row)
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <div id="chart_div"></div>
+</body>
+
+</html>

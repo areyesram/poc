@@ -5,10 +5,11 @@ function makeHorbar() {
 }
 
 function updateHorbar() {
+    var left = ($(window).width() - $(".horbar").width()) / 2;
     var half = $(".horbar .tag").width() / 2;
     $(".horbar .tag").each(function () {
         var pct = Math.random();
-        $(this).css("left", (Math.floor(pct * $(".horbar").width()) - half) + "px");
+        $(this).css("left", (left + Math.floor(pct * $(".horbar").width()) - half) + "px");
         $(this).find("span").text(Math.round(pct * 100) + '%');
     });
 }

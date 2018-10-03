@@ -8,6 +8,23 @@
     font-weight: normal;
 }
 
+.tableGrid td,
+.tableGrid th {
+    color: white;
+    background-color: #1F1F24;
+    border: none;
+}
+
 .tableGrid span.tiny {
     font-size: 16px;
+}
+
+.tableGrid .google-visualization-table.gradient {
+    background-image: none;
+}
+
+.google-visualization-table-table .tableGrid td,
+.google-visualization-table-table .tableGrid th {
+    border: none;
+    background: #1F1F24;
 }
