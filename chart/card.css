@@ -12,7 +12,7 @@
 
 .card tr:nth-child(1) td:nth-child(1) {
     font-size: 18px;
-    color: white;
+    color: "THEME:TEXT-COLOR";
     vertical-align: bottom;
 }
 

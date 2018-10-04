@@ -1,6 +1,19 @@
 {
-    // "THEME:FONT": "DejaVu Sans Mono"
-    "THEME:FONT": "Open Sans"
-    //"THEME:FONT": "Roboto Mono"    
-    // "THEME:FONT": "Montserrat"
+    "theme": {
+        "default": {
+            "font": "Open Sans"
+        },
+        "light": {
+            "text-color": "black",
+            "background": "#fcfcfc",
+            "panel-color": "#f1f1f1",
+            "tag-color": "#e0e0e0"
+        },
+        "dark": {
+            "text-color": "white",
+            "background": "#19191B",
+            "panel-color": "#1F1F24",
+            "tag-color": "#293942"
+        }
+    }
 }

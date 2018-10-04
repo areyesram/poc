@@ -1,5 +1,5 @@
 .tableGrid {
-    font-family: '{THEME:FONT}';
+    font-family: '"THEME:FONT"';
     font-size: 20px;
     padding: 8px;
 }
@@ -10,8 +10,8 @@
 
 .tableGrid td,
 .tableGrid th {
-    color: white;
-    background-color: #1F1F24;
+    color: "THEME:TEXT-COLOR";
+    background-color: "THEME:PANEL-COLOR";
     border: none;
 }
 
@@ -26,5 +26,5 @@
 .google-visualization-table-table .tableGrid td,
 .google-visualization-table-table .tableGrid th {
     border: none;
-    background: #1F1F24;
+    background: "THEME:PANEL-COLOR";
 }

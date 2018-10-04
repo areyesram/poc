@@ -1,18 +1,11 @@
 .canvasGrid {
     height: 32px;
-    font-family: "{THEME:FONT}";
+    font-family: '"THEME:FONT"';
     font-size: 16px;
 }
 
 .canvasGrid th {
     font-weight: normal;
-}
-
-.canvasGrid td,
-.canvasGrid th {
-    color: white;
-    background-color: #1F1F24;
-    border: none;
 }
 
 .canvasGrid td:nth-child(2),
@@ -26,16 +19,18 @@
 
 .google-visualization-table-table .canvasGrid th {
     border: none;
-    background: #1F1F24;
+    background: "THEME:PANEL-COLOR";
+    color: "THEME:TEXT-COLOR";
 }
 
 .google-visualization-table-table .canvasGrid td {
     border: none;
-    background: #121212;
+    background: "THEME:BACKGROUND";
+    color: "THEME:TEXT-COLOR";
     margin-bottom: 8px;
 }
 
-#canvas table{
+#canvas table {
     border-spacing: 0 8px;
     background-color: transparent;
 }

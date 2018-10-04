@@ -3,7 +3,7 @@ function drawTable() {
     var options = {
         width: '80%',
         height: 250,
-        backgroundColor: '#1F1F24',
+        backgroundColor: '"THEME:PANEL-COLOR"',
         allowHtml: true,
         cssClassNames: {
             headerRow: 'tableGrid',
@@ -54,7 +54,7 @@ function drawTable() {
 
     function arrow() {
         glyph = Math.random() < 0.5 ? "down.svg" : "up.svg";
-        return '<img style="height:12px" src="/image/' + glyph + '" />';
+        return '<img style="height:12px" src="/image/{THEME:NAME}/' + glyph + '" />';
     }
 
     var rnd;

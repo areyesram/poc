@@ -4,11 +4,11 @@ var areaCurrent = [0];
 function areaChart() {
     const options = {
         backgroundColor: 'transparent',
-        color: 'white',
-        fontName: '{THEME:FONT}',
+        color: '"THEME:TEXT-COLOR"',
+        fontName: '"THEME:FONT"',
         title: 'BAM',
         titleTextStyle: {
-            color: 'white',
+            color: '"THEME:TEXT-COLOR"',
             fontSize: 32,
             bold: true
         },
@@ -17,19 +17,19 @@ function areaChart() {
             left: '5%'
         },
         legendTextStyle: {
-            color: 'white',
+            color: '"THEME:TEXT-COLOR"',
             fontSize: 14
         },
         vAxis: {
             textStyle: {
                 fontSize: 12,
-                color: 'white',
+                color: '"THEME:TEXT-COLOR"',
             }
         },
         hAxis: {
             textStyle: {
                 fontSize: 12,
-                color: 'white',
+                color: '"THEME:TEXT-COLOR"',
             }
         },
         animation: {
