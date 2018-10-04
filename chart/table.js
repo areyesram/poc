@@ -1,3 +1,5 @@
+var rndTable;
+
 function drawTable() {
     var table = new google.visualization.Table(document.getElementById('table_div'));
     var options = {
@@ -12,9 +14,9 @@ function drawTable() {
         }
     };
     table.draw(getData(), options);
-    // setInterval(function () {
-    //     table.draw(getData(), options);
-    // }, 5000);
+    setInterval(function () {
+        table.draw(getData(), options);
+    }, 5000);
 
     function getData() {
         var data = new google.visualization.DataTable();
@@ -53,18 +55,16 @@ function drawTable() {
     }
 
     function arrow() {
-        glyph = Math.random() < 0.5 ? "down.svg" : "up.svg";
+        var glyph = Math.random() < 0.5 ? "down.svg" : "up.svg";
         return '<img style="height:12px" src="/image/{THEME:NAME}/' + glyph + '" />';
     }
 
-    var rnd;
-
     function getNext(f) {
-        rnd = Math.random() * (f || 1000000);
-        return rnd;
+        rndTable = Math.random() * (f || 1000000);
+        return rndTable;
     }
 
     function getPrev() {
-        return rnd;
+        return rndTable;
     }
 }

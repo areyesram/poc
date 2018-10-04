@@ -18,6 +18,7 @@
   "homepage": "https://github.com/areyesram/poc#readme",
   "dependencies": {
     "config": "^2.0.1",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "memorystore": "^1.6.0"
   }
 }

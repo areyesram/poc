@@ -14,21 +14,28 @@ app.use(bodyParser.json());
 app.use(session({
     secret: '923343ee-6794-4b0b-86b6-be6b17b676ff',
     resave: false,
-    saveUninitialized: true,
-    cookie: {
-        secure: true
-    }
+    saveUninitialized: true
 }));
 
-app.post('/theme', function (req, res) {
-    debugger;
+app.use((req, res, next) => {
+    if (!req.session.theme) {
+        req.session.theme = 'dark';
+    }
+    next();
 });
 
-var dir = path.join(__dirname, '../chart');
+app.post('/theme', function (req, res) {
+    if (req.session.theme == 'dark')
+        req.session.theme = 'light';
+    else
+        req.session.theme = 'dark';
+    res.end();
+});
 
-var mime = {
+const dir = path.join(__dirname, '../chart');
+
+const mime = {
     html: 'text/html',
-    txt: 'text/plain',
     css: 'text/css',
     gif: 'image/gif',
     jpg: 'image/jpeg',
@@ -38,15 +45,16 @@ var mime = {
 };
 
 app.get('*', function (req, res) {
-    var file = path.join(dir, req.path.replace(/\/$/, '/index.html'));
+    const file = path.join(dir, req.path.replace(/\/$/, '/index.html'));
     if (file.indexOf(dir + path.sep) !== 0) {
         return res.status(403).end('Forbidden');
     }
-    var type = mime[path.extname(file).slice(1)] || 'text/plain';
-    var s = fs.createReadStream(file);
+    //TODO: filter-out unserved mime types
+    const type = mime[path.extname(file).slice(1)] || 'text/plain';
+    const s = fs.createReadStream(file);
     s.on('open', function () {
         res.set('Content-Type', type);
-        let theme = getTheme();
+        const theme = getTheme(req.session.theme);
         s.on("data", chunk => {
             let s = new Buffer(chunk).toString("utf8");
             let f = false;
@@ -72,18 +80,16 @@ const port = process.env.PORT || 8080;
 app.listen(port);
 console.log('One does not simply walk into :' + port);
 
-let _currentTheme; //TODO: save to session
-let _themeCache;
+const _themeCache = {};
 
-function getTheme() {
-    _currentTheme = "dark"; //TODO: save to session
-    if (_themeCache)
-        return _themeCache;
-    let themes = config.get("theme");
-    theme = Object.assign(themes.default, themes[_currentTheme]);
-    let res = [{
+function getTheme(currentTheme) {
+    if (currentTheme in _themeCache)
+        return _themeCache[currentTheme];
+    const themes = config.get("theme");
+    theme = Object.assign(themes.default, themes[currentTheme]);
+    const res = [{
         tag: '{THEME:NAME}',
-        value: _currentTheme
+        value: currentTheme
     }];
     for (let prop in theme) {
         res.push({
@@ -91,6 +97,6 @@ function getTheme() {
             value: theme[prop]
         });
     }
-    _themeCache = res;
+    _themeCache[currentTheme] = res;
     return res;
 }

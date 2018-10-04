@@ -31,6 +31,18 @@
         }
 
         .ind_general {}
+
+        .rainbow {
+            width: 16px;
+            height: 16px;
+            display: block;
+            margin-left: auto;
+            background: #49a471;
+            background: -moz-linear-gradient(-45deg, #49a471 0%, #eda518 50%, #ec5448 100%);
+            background: -webkit-linear-gradient(-45deg, #49a471 0%, #eda518 50%, #ec5448 100%);
+            background: linear-gradient(135deg, #49a471 0%, #eda518 50%, #ec5448 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#49a471', endColorstr='#ec5448', GradientType=1);
+        }
     </style>
     <link rel="stylesheet" type="text/css" href="card.css">
     <link rel="stylesheet" type="text/css" href="gauge2.css">
@@ -62,10 +74,21 @@
             drawCanvas();
             areaChart2();
         }
+
+        $(document).ready(function () {
+            $("#theme").click(function () {
+                $.post("/theme", null, function () {
+                    window.location.reload();
+                });
+            });
+        });
     </script>
 </head>
 
 <body>
+    <div style="width:100%">
+        <input id="theme" type="button" class="rainbow" />
+    </div>
     <div class="panel">
         <table>
             <tr>

@@ -2,7 +2,7 @@ var areaData;
 var areaCurrent = [0];
 
 function areaChart() {
-    const options = {
+    var options = {
         backgroundColor: 'transparent',
         color: '"THEME:TEXT-COLOR"',
         fontName: '"THEME:FONT"',
@@ -53,7 +53,7 @@ function areaChart() {
                     'Call Center'
                 ]
             ];
-            for (let i = 0; i < 100; i++) {
+            for (var i = 0; i < 100; i++) {
                 if (i == 0)
                     areaData.push([areaCurrent[0]++,
                         initialize(1),

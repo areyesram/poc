@@ -39,8 +39,9 @@ function gaugeChart() {
             value += Math.random() * 0.2 - 0.1;
             if (value < 0) value = 0;
             if (value > 1) value = 1;
-        } else
+        } else {
             value = Math.random();
+        }
         values[id] = value;
         return value;
     }

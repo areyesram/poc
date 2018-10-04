@@ -1,7 +1,6 @@
 function drawCanvas() {
     var table = new google.visualization.Table(document.getElementById('canvas'));
     var options = {
-        // width: '90%',
         allowHtml: true,
         cssClassNames: {
             headerRow: 'canvasGrid',
@@ -51,15 +50,15 @@ function getData() {
     return data;
 }
 
-var rnd;
+var rndCanvas;
 
 function getNext(f) {
-    rnd = Math.random() - 0.5;
-    return rnd;
+    rndCanvas = Math.random() - 0.5;
+    return rndCanvas;
 }
 
 function getPrev() {
-    return rnd;
+    return rndCanvas;
 }
 
 function draw(id) {
